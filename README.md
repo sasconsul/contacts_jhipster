@@ -4,6 +4,17 @@ This application was generated using JHipster, you can find documentation and he
 
 ## Development
 
+### Create an empty database and user in Postgres
+
+Before you build or run the project the Postgres user and database need to be created.
+
+In psql as root:
+
+    CREATE USER contacts_jhipster;
+    ALTER USER contacts_jhipster SUPERUSER CREATEDB;
+    CREATE DATABASE contacts_jhipster;
+
+
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
 1. [Node.js][]: We use Node to run a development web server and build the project.
@@ -23,11 +34,10 @@ auto-refreshes when files change on your hard drive.
 
     ./mvnw
     gulp
-
+    
 Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
 Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
-
 
 ## Building for production
 
