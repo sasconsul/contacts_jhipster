@@ -3,6 +3,7 @@ package com.sasconsul.contacts.jhipster.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -32,13 +33,16 @@ public class Contacts implements Serializable {
     private Boolean employed;
 
     @Column(name = "created_on")
-    private ZonedDateTime createdOn;
+    private ZonedDateTime createdOn = ZonedDateTime.now(ZoneId.of("UTC"));
 
     @Column(name = "modified_on")
-    private ZonedDateTime modifiedOn;
+    private ZonedDateTime modifiedOn = ZonedDateTime.now(ZoneId.of("UTC"));;
 
-    @Column(name = "deleted")
-    private Boolean deleted;
+    @Column(name = "deleted", columnDefinition="Boolean default 'false'")
+    private Boolean deleted = false;
+
+    @Column(name = "employee_id")
+    private Long employeeId;
 
     public Long getId() {
         return id;
@@ -104,6 +108,14 @@ public class Contacts implements Serializable {
         this.deleted = deleted;
     }
 
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -135,6 +147,7 @@ public class Contacts implements Serializable {
             ", createdOn='" + createdOn + "'" +
             ", modifiedOn='" + modifiedOn + "'" +
             ", deleted='" + deleted + "'" +
+            ", employeeId='" + employeeId + "'" +
             '}';
     }
 }

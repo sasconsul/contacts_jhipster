@@ -26,6 +26,7 @@
                     <th jh-sort-by="createdOn"><span>CreatedOn</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="modifiedOn"><span>ModifiedOn</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="deleted"><span>Deleted</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employeeId"><span>EmployeeId</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@
                     <td>{{contacts.createdOn | date:'medium'}}</td>
                     <td>{{contacts.modifiedOn | date:'medium'}}</td>
                     <td>{{contacts.deleted}}</td>
+                    <td>{{contacts.employeeId}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

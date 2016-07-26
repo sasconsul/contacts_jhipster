@@ -41,4 +41,6 @@ public interface ContactsService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    Page<Contacts> findAllNotDeleted(Pageable pageable);
 }

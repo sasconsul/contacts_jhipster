@@ -9,7 +9,7 @@ import scala.concurrent.duration._
 /**
  * Performance test for the Contacts entity.
  */
-class ContactsGatlingTest extends Simulation {
+class bbContactsGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -67,7 +67,7 @@ class ContactsGatlingTest extends Simulation {
             .exec(http("Create new contacts")
             .post("/api/contacts")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "profession":"SAMPLE_TEXT", "employed":null, "createdOn":"2020-01-01T00:00:00.000Z", "modifiedOn":"2020-01-01T00:00:00.000Z", "deleted":null}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "profession":"SAMPLE_TEXT", "employed":null, "createdOn":"2020-01-01T00:00:00.000Z", "modifiedOn":"2020-01-01T00:00:00.000Z", "deleted":null, "employeeId":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_contacts_url"))).exitHereIfFailed
             .pause(10)

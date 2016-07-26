@@ -89,6 +89,7 @@
                                 createdOn: null,
                                 modifiedOn: null,
                                 deleted: null,
+                                employeeId: null,
                                 id: null
                             };
                         }

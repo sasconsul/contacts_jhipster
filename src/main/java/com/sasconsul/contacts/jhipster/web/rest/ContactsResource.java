@@ -29,10 +29,10 @@ import java.util.Optional;
 public class ContactsResource {
 
     private final Logger log = LoggerFactory.getLogger(ContactsResource.class);
-        
+
     @Inject
     private ContactsService contactsService;
-    
+
     /**
      * POST  /contacts : Create a new contacts.
      *
@@ -93,7 +93,7 @@ public class ContactsResource {
     public ResponseEntity<List<Contacts>> getAllContacts(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Contacts");
-        Page<Contacts> page = contactsService.findAll(pageable); 
+        Page<Contacts> page = contactsService.findAllNotDeleted(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/contacts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

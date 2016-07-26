@@ -69,6 +69,9 @@ public class ContactsResourceIntTest {
     private static final Boolean DEFAULT_DELETED = false;
     private static final Boolean UPDATED_DELETED = true;
 
+    private static final Long DEFAULT_EMPLOYEE_ID = 1L;
+    private static final Long UPDATED_EMPLOYEE_ID = 2L;
+
     @Inject
     private ContactsRepository contactsRepository;
 
@@ -105,6 +108,7 @@ public class ContactsResourceIntTest {
         contacts.setCreatedOn(DEFAULT_CREATED_ON);
         contacts.setModifiedOn(DEFAULT_MODIFIED_ON);
         contacts.setDeleted(DEFAULT_DELETED);
+        contacts.setEmployeeId(DEFAULT_EMPLOYEE_ID);
     }
 
     @Test
@@ -130,6 +134,7 @@ public class ContactsResourceIntTest {
         assertThat(testContacts.getCreatedOn()).isEqualTo(DEFAULT_CREATED_ON);
         assertThat(testContacts.getModifiedOn()).isEqualTo(DEFAULT_MODIFIED_ON);
         assertThat(testContacts.isDeleted()).isEqualTo(DEFAULT_DELETED);
+        assertThat(testContacts.getEmployeeId()).isEqualTo(DEFAULT_EMPLOYEE_ID);
     }
 
     @Test
@@ -149,7 +154,8 @@ public class ContactsResourceIntTest {
                 .andExpect(jsonPath("$.[*].employed").value(hasItem(DEFAULT_EMPLOYED.booleanValue())))
                 .andExpect(jsonPath("$.[*].createdOn").value(hasItem(DEFAULT_CREATED_ON_STR)))
                 .andExpect(jsonPath("$.[*].modifiedOn").value(hasItem(DEFAULT_MODIFIED_ON_STR)))
-                .andExpect(jsonPath("$.[*].deleted").value(hasItem(DEFAULT_DELETED.booleanValue())));
+                .andExpect(jsonPath("$.[*].deleted").value(hasItem(DEFAULT_DELETED.booleanValue())))
+                .andExpect(jsonPath("$.[*].employeeId").value(hasItem(DEFAULT_EMPLOYEE_ID.intValue())));
     }
 
     @Test
@@ -169,7 +175,8 @@ public class ContactsResourceIntTest {
             .andExpect(jsonPath("$.employed").value(DEFAULT_EMPLOYED.booleanValue()))
             .andExpect(jsonPath("$.createdOn").value(DEFAULT_CREATED_ON_STR))
             .andExpect(jsonPath("$.modifiedOn").value(DEFAULT_MODIFIED_ON_STR))
-            .andExpect(jsonPath("$.deleted").value(DEFAULT_DELETED.booleanValue()));
+            .andExpect(jsonPath("$.deleted").value(DEFAULT_DELETED.booleanValue()))
+            .andExpect(jsonPath("$.employeeId").value(DEFAULT_EMPLOYEE_ID.intValue()));
     }
 
     @Test
@@ -198,6 +205,7 @@ public class ContactsResourceIntTest {
         updatedContacts.setCreatedOn(UPDATED_CREATED_ON);
         updatedContacts.setModifiedOn(UPDATED_MODIFIED_ON);
         updatedContacts.setDeleted(UPDATED_DELETED);
+        updatedContacts.setEmployeeId(UPDATED_EMPLOYEE_ID);
 
         restContactsMockMvc.perform(put("/api/contacts")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -215,6 +223,7 @@ public class ContactsResourceIntTest {
         assertThat(testContacts.getCreatedOn()).isEqualTo(UPDATED_CREATED_ON);
         assertThat(testContacts.getModifiedOn()).isEqualTo(UPDATED_MODIFIED_ON);
         assertThat(testContacts.isDeleted()).isEqualTo(UPDATED_DELETED);
+        assertThat(testContacts.getEmployeeId()).isEqualTo(UPDATED_EMPLOYEE_ID);
     }
 
     @Test

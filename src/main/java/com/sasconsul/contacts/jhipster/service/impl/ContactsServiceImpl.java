@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,17 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class ContactsServiceImpl implements ContactsService{
+@Component
+public class ContactsServiceImpl implements ContactsService {
 
     private final Logger log = LoggerFactory.getLogger(ContactsServiceImpl.class);
-    
+
     @Inject
     private ContactsRepository contactsRepository;
-    
+
     /**
      * Save a contacts.
-     * 
+     *
      * @param contacts the entity to save
      * @return the persisted entity
      */
@@ -38,25 +40,25 @@ public class ContactsServiceImpl implements ContactsService{
     }
 
     /**
-     *  Get all the contacts.
-     *  
-     *  @param pageable the pagination information
-     *  @return the list of entities
+     * Get all the contacts.
+     *
+     * @param pageable the pagination information
+     * @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<Contacts> findAll(Pageable pageable) {
         log.debug("Request to get all Contacts");
-        Page<Contacts> result = contactsRepository.findAll(pageable); 
+        Page<Contacts> result = contactsRepository.findAll(pageable);
         return result;
     }
 
     /**
-     *  Get one contacts by id.
+     * Get one contacts by id.
      *
-     *  @param id the id of the entity
-     *  @return the entity
+     * @param id the id of the entity
+     * @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Contacts findOne(Long id) {
         log.debug("Request to get Contacts : {}", id);
         Contacts contacts = contactsRepository.findOne(id);
@@ -64,12 +66,27 @@ public class ContactsServiceImpl implements ContactsService{
     }
 
     /**
-     *  Delete the  contacts by id.
-     *  
-     *  @param id the id of the entity
+     * Delete the  contacts by id.h
+     *
+     * @param id the id of the entity
      */
     public void delete(Long id) {
         log.debug("Request to delete Contacts : {}", id);
         contactsRepository.delete(id);
+    }
+
+    @Override
+    // public Page<Contacts> findAllNotDeleted(Pageable pageable) {
+    /**
+     *  Get all un-deleted the contacts.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<Contacts> findAllNotDeleted(Pageable pageable) {
+        log.debug("Request to get all un-deleted Contacts");
+        Page<Contacts> result = contactsRepository.findAllNotDeleted(pageable);
+        return result;
     }
 }

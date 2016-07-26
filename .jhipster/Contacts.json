@@ -29,6 +29,10 @@
             "fieldName": "deleted",
             "fieldType": "Boolean",
             "fieldValidateRules": []
+        },
+        {
+            "fieldName": "employeeId",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20160722132111",
