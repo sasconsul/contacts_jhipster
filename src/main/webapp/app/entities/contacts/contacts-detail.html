@@ -1,0 +1,48 @@
+
+<div>
+    <h2><span>Contacts</span> {{vm.contacts.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span>Name</dt></dt>
+        <dd>
+            <span>{{vm.contacts.name}}<span>
+        </dd>
+        <hr>
+        <dt><span>Email</dt></dt>
+        <dd>
+            <span>{{vm.contacts.email}}<span>
+        </dd>
+        <hr>
+        <dt><span>Profession</dt></dt>
+        <dd>
+            <span>{{vm.contacts.profession}}<span>
+        </dd>
+        <hr>
+        <dt><span>Employed</dt></dt>
+        <dd>
+            <span>{{vm.contacts.employed}}<span>
+        </dd>
+        <hr>
+        <dt><span>CreatedOn</dt></dt>
+        <dd>
+            <span>{{vm.contacts.createdOn | date:'medium'}}</span>
+        </dd>
+        <hr>
+        <dt><span>ModifiedOn</dt></dt>
+        <dd>
+            <span>{{vm.contacts.modifiedOn | date:'medium'}}</span>
+        </dd>
+        <hr>
+        <dt><span>Deleted</dt></dt>
+        <dd>
+            <span>{{vm.contacts.deleted}}<span>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

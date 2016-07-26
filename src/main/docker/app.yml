@@ -1,0 +1,15 @@
+version: '2'
+services:
+    contacts_jhipster-app:
+        image: contacts_jhipster
+        external_links:
+            - contacts_jhipster-postgresql:postgresql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/contacts_jhipster
+        ports:
+            - 8080:8080
+    contacts_jhipster-postgresql:
+        extends:
+            file: postgresql.yml
+            service: contacts_jhipster-postgresql

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="sasconsul (generated)" id="1469507473866-1">
+      <addColumn tableName="contacts">
+         <column name="created_on" type="timestamp"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="sasconsul (generated)" id="1469507473866-2">
+      <addColumn tableName="contacts">
+         <column name="modified_on" type="timestamp"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="sasconsul (generated)" id="1469507473866-3">
+      <dropSequence sequenceName="contacts_id_seq"/>
+   </changeSet>
+   <changeSet author="sasconsul (generated)" id="1469507473866-4">
+      <dropSequence sequenceName="jhi_persistent_audit_event_event_id_seq"/>
+   </changeSet>
+   <changeSet author="sasconsul (generated)" id="1469507473866-5">
+      <dropSequence sequenceName="jhi_user_id_seq"/>
+   </changeSet>
+   <changeSet author="sasconsul (generated)" id="1469507473866-6">
+      <dropNotNullConstraint columnDataType="varchar(100)"
+                             columnName="email"
+                             tableName="jhi_user"/>
+   </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,39 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "profession",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "modifiedOn",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20160722132111",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "contacts",
+    "pagination": "pager"
+}
